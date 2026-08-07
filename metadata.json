@@ -1,0 +1,6 @@
+{
+  "name": "Arshi Automobile & Car Hub",
+  "description": "Premier automobile dealership and complete car care center in Rajshahi, Bangladesh.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
