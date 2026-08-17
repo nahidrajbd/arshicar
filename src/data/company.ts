@@ -9,6 +9,7 @@ export const COMPANY_INFO = {
   location: "Sopura Mothpukur, Rajshahi",
   address: "Sopura Mothpukur, Near BSCIC Industrial Area, Rajshahi-6203, Bangladesh",
   googleMapsUrl: "https://maps.google.com/?q=Sopura+Mothpukur+Rajshahi",
+  googleReviewUrl: "https://g.page/r/CffJFeGc3AXEEBM/review",
   email: "info@arshicar.com",
   workingHoursWeekday: "Saturday - Thursday: 8:30 AM - 9:00 PM",
   workingHoursFriday: "Friday: 2:30 PM - 9:00 PM",

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Phone, MessageCircle, MapPin, Clock, Mail } from "lucide-react";
+import { Phone, MessageCircle, MapPin, Clock, Mail, Star, ExternalLink } from "lucide-react";
 import { COMPANY_INFO } from "@/data/company";
 
 export const Contact = () => {
@@ -13,6 +13,10 @@ export const Contact = () => {
 
   const handleDirections = () => {
     window.open(COMPANY_INFO.googleMapsUrl, '_blank');
+  };
+
+  const handleGoogleReview = () => {
+    window.open(COMPANY_INFO.googleReviewUrl, '_blank');
   };
 
   return (
@@ -80,13 +84,22 @@ export const Contact = () => {
                 {COMPANY_INFO.address}
               </p>
               
-              <Button 
-                onClick={handleDirections}
-                className="btn-outline w-full"
-              >
-                <MapPin className="mr-2 h-4 w-4" />
-                Get Showroom Directions
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-2.5">
+                <Button 
+                  onClick={handleDirections}
+                  className="btn-outline flex-1"
+                >
+                  <MapPin className="mr-2 h-4 w-4" />
+                  Showroom Directions
+                </Button>
+                <Button 
+                  onClick={handleGoogleReview}
+                  className="btn-secondary flex-1"
+                >
+                  <Star className="mr-2 h-4 w-4 fill-current text-amber-400" />
+                  Review on Google
+                </Button>
+              </div>
             </div>
 
             {/* Business Hours */}

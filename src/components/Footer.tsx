@@ -1,4 +1,4 @@
-import { MessageCircle, Phone, MapPin, Mail, ShieldCheck } from "lucide-react";
+import { MessageCircle, Phone, MapPin, Mail, ShieldCheck, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { COMPANY_INFO } from "@/data/company";
 
@@ -37,9 +37,18 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground text-primary transition-colors"
-                title="Showroom Location"
+                title="Showroom Location on Maps"
               >
                 <MapPin className="h-5 w-5" />
+              </a>
+              <a
+                href={COMPANY_INFO.googleReviewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-amber-500/10 rounded-full flex items-center justify-center hover:bg-amber-500 hover:text-white text-amber-500 transition-colors"
+                title="Review us on Google"
+              >
+                <Star className="h-5 w-5 fill-current" />
               </a>
             </div>
           </div>
@@ -106,6 +115,16 @@ export const Footer = () => {
             <span>•</span>
             <a href="#services-section" className="hover:text-foreground transition-colors">
               Auto Care Services
+            </a>
+            <span>•</span>
+            <a 
+              href={COMPANY_INFO.googleReviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-400 hover:text-amber-300 transition-colors font-medium flex items-center gap-1"
+            >
+              <Star className="w-3 h-3 fill-current" />
+              <span>Review on Google</span>
             </a>
             <span>•</span>
             <span className="text-foreground/80">Sopura Mothpukur, Rajshahi</span>
