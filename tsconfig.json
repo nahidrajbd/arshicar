@@ -17,10 +17,18 @@
     "jsx": "react-jsx",
     "paths": {
       "@/*": [
-        "./*"
+        "./src/*"
       ]
     },
     "allowImportingTsExtensions": true,
     "noEmit": true
-  }
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "mariam-automobile-main",
+    "node_modules",
+    "dist"
+  ]
 }

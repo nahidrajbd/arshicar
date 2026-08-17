@@ -1,176 +1,114 @@
-import React from 'react';
-import { Car, MapPin, Phone, Mail, Clock, MessageSquare, ShieldCheck, Heart } from 'lucide-react';
-import { COMPANY_INFO } from '../data/mockData';
+import { MessageCircle, Phone, MapPin, Mail, ShieldCheck } from "lucide-react";
+import { Link } from "react-router-dom";
+import { COMPANY_INFO } from "@/data/company";
 
-interface FooterProps {
-  onOpenBooking: (serviceId?: string) => void;
-  lang: 'ENG' | 'বাংলা';
-}
-
-export const Footer: React.FC<FooterProps> = ({ onOpenBooking, lang }) => {
+export const Footer = () => {
   return (
-    <footer className="bg-[#10693B] text-white">
-      {/* Upper Footer Links */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          
-          {/* Column 1: Brand Info */}
+    <footer className="bg-secondary/40 border-t border-border">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-white text-[#1C7230] flex items-center justify-center font-bold shadow">
-                <Car className="w-6 h-6 text-[#1C7230]" />
-              </div>
-              <div>
-                <span className="text-xl font-bold font-display tracking-tight text-white block">
-                  ARSHI CAR HUB
-                </span>
-                <span className="text-[11px] text-emerald-200">
-                  Automobile & Detailing Studio
-                </span>
-              </div>
-            </div>
-
-            <p className="text-xs text-emerald-100/80 leading-relaxed">
-              {lang === 'ENG'
-                ? 'Rajshahi’s premier hub for verified Japanese auction grade reconditioned cars, 9H nano ceramic detailing, and computerized servicing.'
-                : 'রাজশাহীতে ভেরিফাইড জাপানি রিকন্ডিশন গাড়ি ও আধুনিক মাস্টার অটো কেয়ারের পূর্ণাঙ্গ সেন্টার।'}
+            <h3 className="text-xl md:text-2xl font-black text-foreground tracking-tight">
+              {COMPANY_INFO.name}
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Rajshahi’s premier hub for verified Japanese auction-grade reconditioned cars, bank auto loans, and computerized automobile detailing.
             </p>
-
-            <div className="pt-1 flex items-center gap-2">
+            <div className="flex gap-3 pt-2">
               <a
                 href={COMPANY_INFO.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-[#EDB713] transition"
+                className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground text-primary transition-colors"
                 title="WhatsApp"
               >
-                <MessageSquare className="w-4 h-4" />
+                <MessageCircle className="h-5 w-5" />
               </a>
               <a
                 href={`tel:${COMPANY_INFO.phone}`}
-                className="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition"
+                className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground text-primary transition-colors"
                 title="Call Phone"
               >
-                <Phone className="w-4 h-4" />
+                <Phone className="h-5 w-5" />
               </a>
               <a
                 href={COMPANY_INFO.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition"
-                title="Google Maps"
+                className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground text-primary transition-colors"
+                title="Showroom Location"
               >
-                <MapPin className="w-4 h-4" />
+                <MapPin className="h-5 w-5" />
               </a>
             </div>
           </div>
 
-          {/* Column 2: Reconditioned Cars */}
-          <div className="space-y-3">
-            <h4 className="text-sm font-bold text-[#EDB713] uppercase tracking-wider">
-              {lang === 'ENG' ? 'Japanese Cars' : 'জাপানি গাড়ি'}
-            </h4>
-            <ul className="space-y-2 text-xs text-emerald-100/90">
-              <li>
-                <a href="#cars" className="hover:text-white transition">Toyota Premio F-EX (2018-2020)</a>
-              </li>
-              <li>
-                <a href="#cars" className="hover:text-white transition">Toyota Harrier Luxury (2020-2022)</a>
-              </li>
-              <li>
-                <a href="#cars" className="hover:text-white transition">Honda Vezel e:HEV Sensing</a>
-              </li>
-              <li>
-                <a href="#cars" className="hover:text-white transition">Toyota Noah & Voxy Hybrid MPV</a>
-              </li>
-              <li>
-                <a href="#cars" className="hover:text-white transition">Toyota Corolla Axio & Fielder</a>
-              </li>
-              <li>
-                <a href="#cars" className="hover:text-white transition">Custom Japanese Auction Bidding</a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3: Auto Care Services */}
-          <div className="space-y-3">
-            <h4 className="text-sm font-bold text-[#EDB713] uppercase tracking-wider">
-              {lang === 'ENG' ? 'Auto Care Services' : 'সার্ভিসসমূহ'}
-            </h4>
-            <ul className="space-y-2 text-xs text-emerald-100/90">
-              <li>
-                <a href="#services" onClick={() => onOpenBooking('ceramic-detailing')} className="hover:text-white transition">
-                  9H Ceramic & Graphene Coating
-                </a>
-              </li>
-              <li>
-                <a href="#services" onClick={() => onOpenBooking('car-wash')} className="hover:text-white transition">
-                  Snow Foam & Underbody Wash
-                </a>
-              </li>
-              <li>
-                <a href="#services" onClick={() => onOpenBooking('dent-paint')} className="hover:text-white transition">
-                  Heated Spray Booth Dent & Paint
-                </a>
-              </li>
-              <li>
-                <a href="#services" onClick={() => onOpenBooking('interior-steam')} className="hover:text-white transition">
-                  Interior Dry Steam Sanitization
-                </a>
-              </li>
-              <li>
-                <a href="#services" onClick={() => onOpenBooking('car-servicing')} className="hover:text-white transition">
-                  Periodic Tune-Up & Synthetic Oil
-                </a>
-              </li>
-              <li>
-                <a href="#services" onClick={() => onOpenBooking('vehicle-inspection')} className="hover:text-white transition">
-                  150-Point Pre-Purchase Car Scan
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4: Contact & Showroom */}
-          <div className="space-y-3">
-            <h4 className="text-sm font-bold text-[#EDB713] uppercase tracking-wider">
-              {lang === 'ENG' ? 'Showroom & Studio' : 'শোরুম ও স্টুডিও'}
-            </h4>
-            <div className="space-y-2.5 text-xs text-emerald-100/90">
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-[#EDB713] flex-shrink-0 mt-0.5" />
-                <span>{COMPANY_INFO.address}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#EDB713] flex-shrink-0" />
-                <a href={`tel:${COMPANY_INFO.phone}`} className="font-bold text-white hover:text-emerald-200">
+          {/* Contact Info */}
+          <div className="space-y-4">
+            <h4 className="text-base font-bold text-foreground uppercase tracking-wider">Showroom & Studio</h4>
+            <div className="space-y-3 text-sm">
+              <div className="flex items-center gap-3">
+                <Phone className="h-4 w-4 text-primary flex-shrink-0" />
+                <a href={`tel:${COMPANY_INFO.phone}`} className="text-muted-foreground hover:text-foreground font-medium">
                   {COMPANY_INFO.phoneFormatted}
                 </a>
               </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#EDB713] flex-shrink-0" />
-                <span>{COMPANY_INFO.email}</span>
+              <div className="flex items-center gap-3">
+                <Mail className="h-4 w-4 text-primary flex-shrink-0" />
+                <a href={`mailto:${COMPANY_INFO.email}`} className="text-muted-foreground hover:text-foreground">
+                  {COMPANY_INFO.email}
+                </a>
               </div>
-              <div className="flex items-start gap-2 pt-1 border-t border-white/10">
-                <Clock className="w-4 h-4 text-[#EDB713] flex-shrink-0 mt-0.5" />
-                <span>{COMPANY_INFO.workingHours}</span>
+              <div className="flex items-start gap-3">
+                <MapPin className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                <span className="text-muted-foreground">
+                  {COMPANY_INFO.address}
+                </span>
               </div>
             </div>
           </div>
 
-        </div>
-      </div>
-
-      {/* Bottom Copyright Bar */}
-      <div className="bg-[#0b4d2b] border-t border-white/10 py-4 px-4 text-xs text-emerald-200/80">
-        <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
-          <div>
-            © {new Date().getFullYear()} {COMPANY_INFO.name}. All rights reserved.
+          {/* Business Hours */}
+          <div className="space-y-4">
+            <h4 className="text-base font-bold text-foreground uppercase tracking-wider">Business Hours</h4>
+            <div className="space-y-2 text-sm">
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Saturday - Thursday:</span>
+                <span className="text-foreground font-medium">8:30 AM - 9:00 PM</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Friday:</span>
+                <span className="text-foreground font-medium">2:30 PM - 9:00 PM</span>
+              </div>
+            </div>
+            <div className="mt-4 p-3 bg-primary/10 rounded-lg border border-primary/20">
+              <p className="text-xs text-primary font-medium text-center">
+                Emergency Contact Available 24/7 via WhatsApp
+              </p>
+            </div>
           </div>
-          <div className="flex items-center gap-4">
-            <a href="#hero" className="hover:text-white transition">Back to Top ↑</a>
-            <span className="text-white/20">|</span>
-            <span className="text-emerald-300 font-medium">Sopura Mothpukur, Rajshahi</span>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-10 pt-6 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
+          <p className="text-center md:text-left">
+            © {new Date().getFullYear()} {COMPANY_INFO.name}. All rights reserved.
+          </p>
+          <div className="flex items-center gap-4 flex-wrap justify-center md:justify-end">
+            <Link to="/privacy" className="hover:text-foreground transition-colors underline-offset-4 hover:underline">
+              Privacy Policy
+            </Link>
+            <span>•</span>
+            <a href="#cars-section" className="hover:text-foreground transition-colors">
+              Japanese Cars
+            </a>
+            <span>•</span>
+            <a href="#services-section" className="hover:text-foreground transition-colors">
+              Auto Care Services
+            </a>
+            <span>•</span>
+            <span className="text-foreground/80">Sopura Mothpukur, Rajshahi</span>
           </div>
         </div>
       </div>

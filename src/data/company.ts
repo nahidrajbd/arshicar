@@ -1,0 +1,20 @@
+export const COMPANY_INFO = {
+  name: "ARSHI AUTOMOBILE & CAR HUB",
+  shortName: "Arshi Car Hub",
+  domain: "arshicar.com",
+  phone: "01712110902",
+  phoneFormatted: "+880 1712-110902",
+  whatsappNumber: "01712110902",
+  whatsappUrl: "https://wa.me/8801712110902?text=Hello%20Arshi%20Automobile,%20I%20am%20interested%20in%20your%20cars/services",
+  location: "Sopura Mothpukur, Rajshahi",
+  address: "Sopura Mothpukur, Near BSCIC Industrial Area, Rajshahi-6203, Bangladesh",
+  googleMapsUrl: "https://maps.google.com/?q=Sopura+Mothpukur+Rajshahi",
+  email: "info@arshicar.com",
+  workingHoursWeekday: "Saturday - Thursday: 8:30 AM - 9:00 PM",
+  workingHoursFriday: "Friday: 2:30 PM - 9:00 PM",
+  tagline: "Japan Recondition & New Cars Sales Center",
+  subtagline: "Rajshahi, Bangladesh",
+  description: "Your trusted partner for premium Japanese reconditioned and brand-new cars, 100% verified auction sheets, bank loan support, and master automobile care in Rajshahi.",
+  facebookUrl: "https://facebook.com/arshicarhub",
+  youtubeUrl: "https://youtube.com/@ArshiCarHub"
+};

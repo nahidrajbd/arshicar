@@ -1,77 +1,82 @@
-import React from 'react';
-import { ShieldCheck, Award, Wrench, Tag, CheckCircle2 } from 'lucide-react';
-import { WHY_CHOOSE_US } from '../data/mockData';
+import { Shield, CreditCard, Award, Wrench } from "lucide-react";
+import { COMPANY_INFO } from "@/data/company";
 
-interface WhyChooseUsProps {
-  lang: 'ENG' | 'বাংলা';
-}
+const features = [
+  {
+    icon: Shield,
+    title: "Trusted Source in Rajshahi",
+    description: "Centrally located at Sopura Mothpukur with a wide selection of premium Japanese reconditioned vehicles and complete transparency."
+  },
+  {
+    icon: Award,
+    title: "100% Verified Auction Sheet",
+    description: "Every single vehicle comes with verifiable Japanese auction inspection sheet (USS/TAA/CAA), genuine mileage, and authentic grade."
+  },
+  {
+    icon: CreditCard,
+    title: "Easy Bank Loan Facility",
+    description: "Hassle-free auto financing assistance with major commercial banks and NBFIs in Bangladesh with competitive interest rates."
+  },
+  {
+    icon: Wrench,
+    title: "Master Detailing & Support",
+    description: "In-house auto care & detailing studio for periodic maintenance, ceramic protection, and comprehensive after-sales warranty."
+  }
+];
 
-export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ lang }) => {
-  const getIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'ShieldCheck':
-        return <ShieldCheck className="w-6 h-6 text-[#1C7230]" />;
-      case 'Wrench':
-        return <Wrench className="w-6 h-6 text-[#1C7230]" />;
-      case 'Tag':
-        return <Tag className="w-6 h-6 text-[#1C7230]" />;
-      case 'Award':
-        return <Award className="w-6 h-6 text-[#1C7230]" />;
-      default:
-        return <CheckCircle2 className="w-6 h-6 text-[#1C7230]" />;
-    }
-  };
-
+export const WhyChooseUs = () => {
   return (
-    <section id="why-us" className="py-12 sm:py-16 bg-[#FCFCFC] border-b border-gray-100">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#1C7230] bg-[#EFF7F1] px-3 py-1 rounded-full mb-2">
-            <Award className="w-3.5 h-3.5" />
-            <span>{lang === 'ENG' ? 'Trusted by 5,000+ Car Owners' : '৫,০০০+ গাড়ি মালিকের বিশ্বস্ত সঙ্গী'}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 font-display">
-            {lang === 'ENG' ? 'Why Choose Arshi Automobile?' : 'কেন আরশি অটোমোবাইল বেছে নেবেন?'}
-          </h2>
-          <p className="text-gray-500 text-xs sm:text-sm mt-1">
-            {lang === 'ENG'
-              ? 'Setting the benchmark for automobile sales and master detailing in Rajshahi.'
-              : 'রাজশাহীতে আধুনিক গাড়ি বিক্রয় ও সর্বোচ্চ মানের অটো কেয়ার সেবার নিশ্চয়তা।'}
+    <section className="py-20 bg-gradient-to-b from-secondary/20 to-background border-t border-border/40">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="section-title">Why Choose {COMPANY_INFO.shortName}?</h2>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            We are committed to delivering the most reliable and premium car buying experience in Rajshahi, backed by verified authenticity and expert automotive care.
           </p>
         </div>
 
-        {/* 4-Grid Cards (Shomvob Feature Card Style) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {WHY_CHOOSE_US.map((item) => (
-            <div
-              key={item.id}
-              className="shomvob-card p-5 sm:p-6 flex flex-col justify-between group"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#EFF7F1] flex items-center justify-center group-hover:bg-[#1C7230] group-hover:text-white transition-colors duration-300">
-                    {getIcon(item.iconName)}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((feature, index) => {
+            const IconComponent = feature.icon;
+            return (
+              <div key={index} className="feature-card group flex flex-col items-center">
+                <div className="mb-6">
+                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300 border border-primary/20">
+                    <IconComponent className="h-8 w-8 text-primary" />
                   </div>
-                  {item.statBadge && (
-                    <span className="text-[11px] font-bold text-[#10693B] bg-[#EFF7F1] px-2.5 py-1 rounded-md">
-                      {item.statBadge}
-                    </span>
-                  )}
                 </div>
-
-                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 group-hover:text-[#1C7230] transition-colors">
-                  {item.title}
+                
+                <h3 className="text-lg md:text-xl font-bold text-foreground mb-3">
+                  {feature.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                  {item.description}
+                
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {feature.description}
                 </p>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
+        {/* Stats Section */}
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div className="p-6 rounded-xl bg-card border border-border/80 shadow-sm space-y-1.5">
+            <div className="text-3xl md:text-4xl font-black text-primary">500+</div>
+            <div className="text-xs md:text-sm text-muted-foreground uppercase tracking-wider font-semibold">Cars Delivered</div>
+          </div>
+          <div className="p-6 rounded-xl bg-card border border-border/80 shadow-sm space-y-1.5">
+            <div className="text-3xl md:text-4xl font-black text-primary">10+</div>
+            <div className="text-xs md:text-sm text-muted-foreground uppercase tracking-wider font-semibold">Years Trust</div>
+          </div>
+          <div className="p-6 rounded-xl bg-card border border-border/80 shadow-sm space-y-1.5">
+            <div className="text-3xl md:text-4xl font-black text-primary">100%</div>
+            <div className="text-xs md:text-sm text-muted-foreground uppercase tracking-wider font-semibold">Verified Auction</div>
+          </div>
+          <div className="p-6 rounded-xl bg-card border border-border/80 shadow-sm space-y-1.5">
+            <div className="text-3xl md:text-4xl font-black text-primary">24/7</div>
+            <div className="text-xs md:text-sm text-muted-foreground uppercase tracking-wider font-semibold">WhatsApp Support</div>
+          </div>
+        </div>
       </div>
     </section>
   );
