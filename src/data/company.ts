@@ -16,6 +16,10 @@ export const COMPANY_INFO = {
   tagline: "Japan Recondition & New Cars Sales Center",
   subtagline: "Rajshahi, Bangladesh",
   description: "Your trusted partner for premium Japanese reconditioned and brand-new cars, 100% verified auction sheets, bank loan support, and master automobile care in Rajshahi.",
-  facebookUrl: "https://facebook.com/arshicarhub",
-  youtubeUrl: "https://youtube.com/@ArshiCarHub"
+  facebookUrl: "https://www.facebook.com/arshicar",
+  instagramUrl: "https://www.instagram.com/_arshicar/",
+  linkedinUrl: "https://www.linkedin.com/company/arshicar",
+  youtubeUrl: "https://www.youtube.com/@arshicar",
+  xUrl: "https://x.com/arshicar",
+  tiktokUrl: "https://www.tiktok.com/@arshicar"
 };
