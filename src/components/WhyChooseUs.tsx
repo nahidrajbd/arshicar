@@ -1,81 +1,75 @@
 import React from 'react';
+import { ShieldCheck, Award, Wrench, Tag, CheckCircle2 } from 'lucide-react';
 import { WHY_CHOOSE_US } from '../data/mockData';
-import { Icon } from './Icon';
-import { ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-react';
 
-export const WhyChooseUs: React.FC = () => {
+interface WhyChooseUsProps {
+  lang: 'ENG' | 'বাংলা';
+}
+
+export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ lang }) => {
+  const getIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'ShieldCheck':
+        return <ShieldCheck className="w-6 h-6 text-[#1C7230]" />;
+      case 'Wrench':
+        return <Wrench className="w-6 h-6 text-[#1C7230]" />;
+      case 'Tag':
+        return <Tag className="w-6 h-6 text-[#1C7230]" />;
+      case 'Award':
+        return <Award className="w-6 h-6 text-[#1C7230]" />;
+      default:
+        return <CheckCircle2 className="w-6 h-6 text-[#1C7230]" />;
+    }
+  };
+
   return (
-    <section id="why-us" className="py-20 bg-[#181818] text-white relative overflow-hidden border-t border-stone-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="why-us" className="py-12 sm:py-16 bg-[#FCFCFC] border-b border-gray-100">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div>
-            <span className="editorial-tag">Why Car Owners Choose Us</span>
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#1C7230] bg-[#EFF7F1] px-3 py-1 rounded-full mb-2">
+            <Award className="w-3.5 h-3.5" />
+            <span>{lang === 'ENG' ? 'Trusted by 5,000+ Car Owners' : '৫,০০০+ গাড়ি মালিকের বিশ্বস্ত সঙ্গী'}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight">
-            Why Choose <span className="font-editorial italic font-normal text-[#C1121F]">Arshi Automobile</span>?
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 font-display">
+            {lang === 'ENG' ? 'Why Choose Arshi Automobile?' : 'কেন আরশি অটোমোবাইল বেছে নেবেন?'}
           </h2>
-          <p className="text-stone-300 text-base sm:text-lg font-sans">
-            We combine high-tech German & Japanese equipment with certified engineers to deliver unmatched accuracy, safety, and gloss for your vehicle in Rajshahi.
+          <p className="text-gray-500 text-xs sm:text-sm mt-1">
+            {lang === 'ENG'
+              ? 'Setting the benchmark for automobile sales and master detailing in Rajshahi.'
+              : 'রাজশাহীতে আধুনিক গাড়ি বিক্রয় ও সর্বোচ্চ মানের অটো কেয়ার সেবার নিশ্চয়তা।'}
           </p>
         </div>
 
-        {/* 4 Requested Feature Cards */}
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {WHY_CHOOSE_US.map((feat) => (
+        {/* 4-Grid Cards (Shomvob Feature Card Style) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {WHY_CHOOSE_US.map((item) => (
             <div
-              key={feat.id}
-              className="group bg-[#222222] rounded-3xl p-8 border border-stone-800 hover:border-[#C1121F] hover:shadow-2xl transition-all duration-300 relative flex flex-col justify-between"
+              key={item.id}
+              className="shomvob-card p-5 sm:p-6 flex flex-col justify-between group"
             >
               <div>
-                {/* Stat Badge if available */}
-                {feat.statBadge && (
-                  <div className="absolute top-6 right-6 text-[10px] uppercase font-extrabold tracking-wider bg-[#2A2A2A] text-stone-300 px-2.5 py-1 rounded-full group-hover:bg-[#C1121F] group-hover:text-white transition-colors">
-                    {feat.statBadge}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-[#EFF7F1] flex items-center justify-center group-hover:bg-[#1C7230] group-hover:text-white transition-colors duration-300">
+                    {getIcon(item.iconName)}
                   </div>
-                )}
-
-                {/* Icon Container */}
-                <div className="w-14 h-14 rounded-2xl bg-[#1A1A1A] text-[#C1121F] border border-stone-800 shadow-sm flex items-center justify-center mb-6 group-hover:bg-[#C1121F] group-hover:text-white group-hover:border-[#C1121F] transition-all duration-300">
-                  <Icon name={feat.iconName} className="w-7 h-7" />
+                  {item.statBadge && (
+                    <span className="text-[11px] font-bold text-[#10693B] bg-[#EFF7F1] px-2.5 py-1 rounded-md">
+                      {item.statBadge}
+                    </span>
+                  )}
                 </div>
 
-                <h3 className="text-xl font-bold font-display text-white mb-3 group-hover:text-[#C1121F] transition-colors">
-                  {feat.title}
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 group-hover:text-[#1C7230] transition-colors">
+                  {item.title}
                 </h3>
-
-                <p className="text-stone-300 text-sm leading-relaxed font-sans">
-                  {feat.description}
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                  {item.description}
                 </p>
-              </div>
-
-              <div className="pt-6 mt-6 border-t border-stone-800 flex items-center space-x-2 text-xs font-bold text-stone-400">
-                <CheckCircle2 className="w-4 h-4 text-[#C1121F]" />
-                <span>Verified Rajshahi Workshop</span>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Trust Guarantee Box */}
-        <div className="mt-14 bg-[#121212] text-white rounded-3xl p-8 border border-stone-800 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center space-x-4">
-            <div className="w-14 h-14 rounded-2xl bg-[#C1121F] text-white flex items-center justify-center shrink-0">
-              <Sparkles className="w-7 h-7" />
-            </div>
-            <div>
-              <h4 className="text-xl font-bold font-display text-white">100% Quality & Service Satisfaction Guarantee</h4>
-              <p className="text-stone-400 text-xs sm:text-sm">If you're not completely satisfied with our cleaning or polish work, we will re-do it for free!</p>
-            </div>
-          </div>
-
-          <a
-            href="tel:01712110902"
-            className="px-6 py-3.5 bg-white text-stone-900 hover:bg-stone-100 font-extrabold text-xs uppercase tracking-wider rounded-xl shrink-0 transition"
-          >
-            📞 Call Hotline: 01712110902
-          </a>
         </div>
 
       </div>

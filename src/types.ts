@@ -9,6 +9,8 @@ export interface ServiceItem {
   startingPrice: string;
   category: 'cleaning' | 'restoration' | 'mechanical' | 'sales';
   image: string;
+  badge?: string;
+  popular?: boolean;
 }
 
 export interface ReconditionedCar {
@@ -22,11 +24,17 @@ export interface ReconditionedCar {
   mileage: string;
   auctionGrade: string;
   price: string;
+  rawPriceNumber?: number;
   transmission: string;
   fuelType: string;
   features: string[];
   image: string;
+  galleryImages?: string[];
   status: 'In Stock' | 'Upcoming' | 'Sold';
+  bodyType: 'Sedan' | 'SUV' | 'MPV' | 'Hatchback';
+  chassisCode?: string;
+  location: string;
+  verifiedAuction?: boolean;
 }
 
 export interface FeaturePoint {

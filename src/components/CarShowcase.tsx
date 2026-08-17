@@ -1,252 +1,171 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Car, Fuel, Gauge, ShieldCheck, ChevronRight, Sparkles, MapPin, ArrowRight } from 'lucide-react';
 import { RECONDITIONED_CARS, COMPANY_INFO } from '../data/mockData';
 import { ReconditionedCar } from '../types';
-import { Car, Fuel, Gauge, Award, CheckCircle2, ShieldCheck, Phone, ChevronRight } from 'lucide-react';
 
 interface CarShowcaseProps {
   onInquireCar: (carTitle: string) => void;
+  onViewCarDetails: (car: ReconditionedCar) => void;
+  lang: 'ENG' | 'বাংলা';
 }
 
-export const CarShowcase: React.FC<CarShowcaseProps> = ({ onInquireCar }) => {
-  const [selectedCar, setSelectedCar] = useState<ReconditionedCar | null>(null);
+export const CarShowcase: React.FC<CarShowcaseProps> = ({
+  onInquireCar,
+  onViewCarDetails,
+  lang,
+}) => {
+  // Static list of 6 Japanese Reconditioned Cars
+  const cars = RECONDITIONED_CARS.slice(0, 6);
 
   return (
-    <section id="reconditioned" className="py-20 bg-[#1F1F1F] text-white relative overflow-hidden">
-      
-      {/* Background Subtle Accent Lines */}
-      <div className="absolute inset-0 bg-[radial-gradient(#C1121F_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="cars" className="py-12 sm:py-16 bg-[#FCFCFC] border-b border-gray-100">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6 border-b border-stone-800 pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
-            <div className="mb-3">
-              <span className="editorial-tag">Japanese Reconditioned Imports</span>
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#1C7230] bg-[#EFF7F1] px-3 py-1 rounded-full mb-2">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{lang === 'ENG' ? 'Japanese Auction Imports' : 'জাপানি রিকন্ডিশন গাড়ি'}</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight">
-              Featured <span className="font-editorial italic font-normal text-[#C1121F]">Reconditioned Cars</span> for Sale
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 font-display">
+              {lang === 'ENG' ? 'Japanese Reconditioned Cars' : 'জাপানি রিকন্ডিশন গাড়িসমূহ'}
             </h2>
-            <p className="text-stone-400 text-sm sm:text-base mt-2 max-w-2xl font-sans">
-              Hand-picked Japanese vehicles in Rajshahi with verified auction sheets, low mileage, original factory paint, and full registration support.
+            <p className="text-gray-500 text-xs sm:text-sm mt-1">
+              {lang === 'ENG'
+                ? 'Genuine auction-graded Japanese cars available at Sopura Mothpukur showroom, Rajshahi.'
+                : 'রাজশাহীর সোপুরা মঠপুকুর শোরুমে সরাসরি জাপান থেকে আমদানিকৃত ১০০% ভেরিফাইড অকশন গাড়ি।'}
             </p>
           </div>
 
-          <div className="flex items-center space-x-3 shrink-0">
-            <div className="bg-stone-900 border border-stone-800 px-4 py-3 rounded-2xl text-xs text-stone-300 flex items-center space-x-2">
-              <ShieldCheck className="w-5 h-5 text-emerald-400" />
-              <div>
-                <div className="font-bold text-white">Verified Auction Sheets</div>
-                <div className="text-[10px] text-stone-400">100% Genuine Japanese Grades</div>
-              </div>
-            </div>
+          <div className="inline-flex items-center gap-2 bg-[#EFF7F1] border border-emerald-200 text-[#10693B] px-3.5 py-1.5 rounded-xl text-xs font-bold self-start md:self-auto">
+            <span className="w-2 h-2 rounded-full bg-[#1C7230] animate-pulse" />
+            <span>6 Cars Ready in Showroom</span>
           </div>
         </div>
 
-        {/* Cars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {RECONDITIONED_CARS.map((car) => (
+        {/* Static 6 Cars Grid (Shomvob Card Layout) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {cars.map((car) => (
             <div
               key={car.id}
-              className="group bg-stone-900 rounded-3xl overflow-hidden border border-stone-800 hover:border-[#C1121F] transition-all duration-300 flex flex-col justify-between shadow-xl"
+              className="shomvob-card flex flex-col justify-between overflow-hidden group cursor-pointer"
+              onClick={() => onViewCarDetails(car)}
             >
               <div>
-                {/* Image & Status Badge */}
-                <div className="relative h-48 overflow-hidden bg-stone-800">
+                {/* Image with Badges */}
+                <div className="relative h-52 bg-gray-100 overflow-hidden">
                   <img
                     src={car.image}
-                    alt={`${car.title} in Rajshahi`}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    referrerPolicy="no-referrer"
+                    alt={car.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1F1F1F] via-transparent to-transparent opacity-80" />
-
-                  {/* Auction Grade Badge */}
-                  <div className="absolute top-3 left-3 bg-[#C1121F] text-white px-3 py-1 rounded-xl text-xs font-black shadow-md border border-red-500/30">
-                    Grade {car.auctionGrade}
+                  <div className="absolute top-3 left-3 flex items-center gap-1.5">
+                    <span className="bg-[#1C7230] text-white text-[11px] font-bold px-2.5 py-1 rounded-md shadow">
+                      Grade {car.auctionGrade}
+                    </span>
+                    <span className="bg-white/90 text-gray-800 text-[11px] font-bold px-2.5 py-1 rounded-md shadow backdrop-blur-xs">
+                      {car.year}
+                    </span>
                   </div>
 
-                  {/* Status Badge */}
-                  <div className="absolute top-3 right-3 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-bold">
-                    {car.status}
-                  </div>
-
-                  {/* Year Tag */}
-                  <div className="absolute bottom-3 left-3 text-xs font-extrabold text-stone-200 bg-stone-900/80 px-2.5 py-0.5 rounded-lg border border-stone-700/80">
-                    {car.year} Model
+                  <div className="absolute top-3 right-3">
+                    <span className="bg-stone-900/80 text-[#EDB713] text-[11px] font-bold px-2.5 py-1 rounded-md shadow backdrop-blur-xs">
+                      {car.status}
+                    </span>
                   </div>
                 </div>
 
-                {/* Spec Highlights */}
+                {/* Card Body */}
                 <div className="p-5 space-y-3">
-                  <h3 className="text-lg font-bold font-display text-white group-hover:text-[#C1121F] transition-colors leading-snug">
-                    {car.title}
-                  </h3>
+                  <div>
+                    <span className="text-[11px] uppercase font-bold text-gray-400 tracking-wider">
+                      {car.make} • {car.bodyType}
+                    </span>
+                    <h3 className="text-base sm:text-lg font-bold text-gray-900 line-clamp-1 group-hover:text-[#1C7230] transition-colors">
+                      {car.title}
+                    </h3>
+                  </div>
 
-                  {/* Specs Pill List */}
-                  <div className="grid grid-cols-2 gap-2 text-xs text-stone-300 pt-1">
-                    <div className="bg-stone-800/80 p-2 rounded-xl flex items-center space-x-1.5">
-                      <Car className="w-3.5 h-3.5 text-[#C1121F]" />
-                      <span>{car.engine}</span>
+                  {/* Shomvob Specs Pills Grid */}
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    <div className="inline-flex items-center gap-1 rounded-md bg-gray-100 px-2.5 py-1 text-xs text-gray-700 font-medium">
+                      <MapPin className="w-3.5 h-3.5 text-[#1C7230]" />
+                      <span>{car.location}</span>
                     </div>
-                    <div className="bg-stone-800/80 p-2 rounded-xl flex items-center space-x-1.5">
-                      <Gauge className="w-3.5 h-3.5 text-[#C1121F]" />
+
+                    <div className="inline-flex items-center gap-1 rounded-md bg-gray-100 px-2.5 py-1 text-xs text-gray-700 font-medium">
+                      <Gauge className="w-3.5 h-3.5 text-[#1C7230]" />
                       <span>{car.mileage}</span>
                     </div>
-                    <div className="bg-stone-800/80 p-2 rounded-xl flex items-center space-x-1.5">
-                      <Fuel className="w-3.5 h-3.5 text-[#C1121F]" />
+
+                    <div className="inline-flex items-center gap-1 rounded-md bg-gray-100 px-2.5 py-1 text-xs text-gray-700 font-medium">
+                      <Fuel className="w-3.5 h-3.5 text-[#1C7230]" />
+                      <span>{car.engine}</span>
+                    </div>
+
+                    <div className="inline-flex items-center gap-1 rounded-md bg-[#EFF7F1] text-[#10693B] px-2.5 py-1 text-xs font-semibold">
                       <span>{car.fuelType}</span>
                     </div>
-                    <div className="bg-stone-800/80 p-2 rounded-xl flex items-center space-x-1.5">
-                      <span className="w-2 h-2 rounded-full bg-amber-400" />
-                      <span>{car.color}</span>
-                    </div>
-                  </div>
-
-                  {/* Price */}
-                  <div className="pt-2 border-t border-stone-800 flex items-center justify-between">
-                    <span className="text-xs text-stone-400">Price</span>
-                    <span className="text-lg font-black font-display text-[#C1121F]">{car.price}</span>
                   </div>
                 </div>
               </div>
 
-              {/* Card Actions */}
-              <div className="p-5 pt-0 grid grid-cols-2 gap-2 mt-2">
+              {/* Card Footer */}
+              <div className="px-5 pb-5 pt-3 border-t border-gray-100 flex items-center justify-between gap-2">
+                <div>
+                  <span className="text-[10px] text-gray-400 block uppercase font-medium">
+                    {lang === 'ENG' ? 'Price' : 'মূল্য'}
+                  </span>
+                  <span className="text-base sm:text-lg font-bold text-[#1C7230]">
+                    {car.price}
+                  </span>
+                </div>
+
                 <button
-                  onClick={() => setSelectedCar(car)}
-                  className="py-2.5 px-3 bg-stone-800 hover:bg-stone-700 text-stone-200 rounded-xl text-xs font-bold transition text-center"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onViewCarDetails(car);
+                  }}
+                  className="inline-flex items-center gap-1 bg-[#1C7230] hover:bg-[#10693B] text-white px-3.5 py-2 rounded-lg text-xs font-bold transition shadow-xs cursor-pointer group/btn"
                 >
-                  Full Specs
-                </button>
-                <button
-                  onClick={() => onInquireCar(car.title)}
-                  className="py-2.5 px-3 bg-[#C1121F] hover:bg-[#9E0E18] text-white rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1 shadow-md"
-                >
-                  <span>Inquire</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
+                  <span>{lang === 'ENG' ? 'See Details' : 'বিস্তারিত দেখুন'}</span>
+                  <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5" />
                 </button>
               </div>
-
             </div>
           ))}
         </div>
 
-        {/* Custom Pre-order Banner */}
-        <div className="mt-12 bg-gradient-to-r from-stone-900 via-[#2A2A2A] to-stone-900 border border-stone-800 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
-          <div className="space-y-2 text-left">
-            <h3 className="text-2xl font-extrabold font-display text-white">
-              Looking for a Specific Japanese Car Model or Color?
-            </h3>
-            <p className="text-stone-300 text-sm max-w-2xl">
-              We import directly from USS, TAA, & JU auctions in Japan based on your exact choice of grade, budget, and features.
-            </p>
+        {/* Pre-Order Banner */}
+        <div className="mt-10 bg-[#EFF7F1] border border-[#28A143]/30 rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-xl bg-[#1C7230] text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+              <ShieldCheck className="w-7 h-7 text-[#EDB713]" />
+            </div>
+            <div>
+              <h4 className="text-base font-bold text-gray-900">
+                {lang === 'ENG' ? 'Need a Custom Model from Japan?' : 'জাপান থেকে পছন্দের নির্দিষ্ট গাড়ি আনতে চান?'}
+              </h4>
+              <p className="text-xs sm:text-sm text-gray-600">
+                {lang === 'ENG'
+                  ? 'We provide live auction bidding and direct import on your behalf with 100% genuine auction sheet.'
+                  : 'আমরা সরাসরি জাপানের লাইভ অকশনে বিড করে আপনার কাঙ্ক্ষিত গাড়ি এনে দেব।'}
+              </p>
+            </div>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0">
-            <a
-              href={COMPANY_INFO.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-2xl text-xs uppercase tracking-wider flex items-center space-x-2 transition shadow-lg"
-            >
-              <span>💬 Pre-Order on WhatsApp</span>
-            </a>
-            <a
-              href={`tel:${COMPANY_INFO.phone}`}
-              className="px-6 py-3.5 bg-[#C1121F] hover:bg-[#9E0E18] text-white font-bold rounded-2xl text-xs uppercase tracking-wider flex items-center space-x-2 transition shadow-lg"
-            >
-              <Phone className="w-4 h-4" />
-              <span>Call Showroom</span>
-            </a>
-          </div>
+          <a
+            href={COMPANY_INFO.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#1C7230] hover:bg-[#10693B] text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-xl transition shadow-md whitespace-nowrap flex items-center gap-2"
+          >
+            <span>{lang === 'ENG' ? 'Talk to Auto Consultant' : 'অটো কনসালটেন্টের সাথে কথা বলুন'}</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
-
       </div>
-
-      {/* Car Specs Modal */}
-      {selectedCar && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xs">
-          <div className="bg-[#1F1F1F] text-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl border border-stone-800 max-h-[90vh] overflow-y-auto space-y-6">
-            <button
-              onClick={() => setSelectedCar(null)}
-              className="absolute top-4 right-4 p-2 text-stone-400 hover:text-white bg-stone-800 rounded-full"
-            >
-              ✕
-            </button>
-
-            <div className="space-y-1">
-              <span className="text-xs font-bold text-[#C1121F] uppercase tracking-wider">Auction Grade: {selectedCar.auctionGrade}</span>
-              <h3 className="text-2xl font-bold font-display text-white">{selectedCar.title}</h3>
-            </div>
-
-            <img
-              src={selectedCar.image}
-              alt={selectedCar.title}
-              className="w-full h-60 object-cover rounded-2xl border border-stone-800"
-              referrerPolicy="no-referrer"
-            />
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
-              <div className="bg-stone-800 p-3 rounded-xl">
-                <span className="text-stone-400 block text-[10px]">Year</span>
-                <span className="font-bold text-white text-sm">{selectedCar.year}</span>
-              </div>
-              <div className="bg-stone-800 p-3 rounded-xl">
-                <span className="text-stone-400 block text-[10px]">Engine</span>
-                <span className="font-bold text-white text-sm">{selectedCar.engine}</span>
-              </div>
-              <div className="bg-stone-800 p-3 rounded-xl">
-                <span className="text-stone-400 block text-[10px]">Mileage</span>
-                <span className="font-bold text-white text-sm">{selectedCar.mileage}</span>
-              </div>
-              <div className="bg-stone-800 p-3 rounded-xl">
-                <span className="text-stone-400 block text-[10px]">Fuel Type</span>
-                <span className="font-bold text-white text-sm">{selectedCar.fuelType}</span>
-              </div>
-              <div className="bg-stone-800 p-3 rounded-xl">
-                <span className="text-stone-400 block text-[10px]">Transmission</span>
-                <span className="font-bold text-white text-sm">{selectedCar.transmission}</span>
-              </div>
-              <div className="bg-stone-800 p-3 rounded-xl">
-                <span className="text-stone-400 block text-[10px]">Color</span>
-                <span className="font-bold text-white text-sm">{selectedCar.color}</span>
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <h4 className="font-bold text-xs uppercase tracking-wider text-stone-300">Key Japanese Features:</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-stone-300">
-                {selectedCar.features.map((feat, idx) => (
-                  <div key={idx} className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#C1121F]" />
-                    <span>{feat}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between border-t border-stone-800 pt-4">
-              <div>
-                <div className="text-xs text-stone-400">Asking Price</div>
-                <div className="text-2xl font-black font-display text-[#C1121F]">{selectedCar.price}</div>
-              </div>
-              <button
-                onClick={() => {
-                  const title = selectedCar.title;
-                  setSelectedCar(null);
-                  onInquireCar(title);
-                }}
-                className="px-6 py-3 bg-[#C1121F] hover:bg-[#9E0E18] text-white font-bold rounded-xl text-sm transition shadow-lg"
-              >
-                Inquire or Test Drive
-              </button>
-            </div>
-
-          </div>
-        </div>
-      )}
-
     </section>
   );
 };

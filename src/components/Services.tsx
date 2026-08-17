@@ -1,244 +1,158 @@
 import React, { useState } from 'react';
-import { SERVICES_LIST } from '../data/mockData';
+import { Sparkles, Droplets, Paintbrush, Wrench, Clock, CheckCircle2, ArrowRight, Calendar, Tag, Shield } from 'lucide-react';
+import { SERVICES_LIST, COMPANY_INFO } from '../data/mockData';
 import { ServiceItem } from '../types';
-import { Icon } from './Icon';
-import { ArrowRight, CheckCircle2, Clock, Tag, Search, Sparkles, Filter } from 'lucide-react';
 
 interface ServicesProps {
-  onSelectServiceToBook: (serviceId: string) => void;
+  onSelectServiceToBook: (serviceId?: string) => void;
+  lang: 'ENG' | 'বাংলা';
 }
 
-export const Services: React.FC<ServicesProps> = ({ onSelectServiceToBook }) => {
-  const [activeCategory, setActiveCategory] = useState<string>('all');
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [selectedServiceForModal, setSelectedServiceForModal] = useState<ServiceItem | null>(null);
-
-  const categories = [
-    { id: 'all', label: 'All Services' },
-    { id: 'sales', label: 'Car Sales' },
-    { id: 'cleaning', label: 'Car Wash & Cleaning' },
-    { id: 'restoration', label: 'Detailing, Polish & Paint' },
-    { id: 'mechanical', label: 'Servicing & Inspection' },
-  ];
+export const Services: React.FC<ServicesProps> = ({ onSelectServiceToBook, lang }) => {
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const filteredServices = SERVICES_LIST.filter((service) => {
-    const matchesCategory = activeCategory === 'all' || service.category === activeCategory;
-    const matchesSearch = service.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          service.shortDesc.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
+    if (selectedCategory === 'all') return true;
+    return service.category === selectedCategory;
   });
 
-  return (
-    <section id="services" className="py-20 bg-[#121212] text-white relative border-t border-stone-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div>
-            <span className="editorial-tag">Specialized Automotive Services</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight">
-            Our Business <span className="font-editorial italic font-normal text-[#C1121F]">Services</span>
-          </h2>
-          <p className="text-stone-300 text-base sm:text-lg font-sans">
-            From importing high-grade Japanese reconditioned vehicles to deep detailing and precision paintwork, we offer complete car care under one roof in Rajshahi.
-          </p>
-        </div>
+  const getServiceIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'Sparkles':
+        return <Sparkles className="w-5 h-5 text-[#1C7230]" />;
+      case 'Droplets':
+        return <Droplets className="w-5 h-5 text-[#1C7230]" />;
+      case 'Paintbrush':
+        return <Paintbrush className="w-5 h-5 text-[#1C7230]" />;
+      case 'Wrench':
+        return <Wrench className="w-5 h-5 text-[#1C7230]" />;
+      default:
+        return <Shield className="w-5 h-5 text-[#1C7230]" />;
+    }
+  };
 
-        {/* Filter Bar & Search */}
-        <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-4 bg-[#1E1E1E] p-4 rounded-2xl shadow-xl border border-stone-800">
-          
-          {/* Category Tabs */}
-          <div className="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 no-scrollbar">
-            {categories.map((cat) => (
+  return (
+    <section id="services" className="py-12 sm:py-16 bg-[#FCFCFC] border-b border-gray-100">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header (Shomvob Style) */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div>
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#1C7230] bg-[#EFF7F1] px-3 py-1 rounded-full mb-2">
+              <Wrench className="w-3.5 h-3.5" />
+              <span>{lang === 'ENG' ? 'Master Detailing & Care' : 'অটো কেয়ার ও সার্ভিস'}</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 font-display">
+              {lang === 'ENG' ? 'Expert Auto Care & Detailing Services' : 'মাস্টার অটো কেয়ার ও ডিটেইলিং সার্ভিস'}
+            </h2>
+            <p className="text-gray-500 text-xs sm:text-sm mt-1">
+              {lang === 'ENG'
+                ? 'From 9H nano ceramic shields to dust-free spray booth painting in Rajshahi.'
+                : '৯এইচ ন্যানো সিরামিক কোটিং থেকে শুরু করে ডাস্ট-ফ্রি স্প্রে বুথ পেইন্টিং।'}
+            </p>
+          </div>
+
+          {/* Category Filter Pills */}
+          <div className="flex flex-wrap items-center gap-1.5 bg-gray-100 p-1 rounded-xl border border-gray-200 self-start md:self-auto">
+            {[
+              { id: 'all', label: lang === 'ENG' ? 'All Services' : 'সকল সার্ভিস' },
+              { id: 'restoration', label: lang === 'ENG' ? 'Detailing & Paint' : 'ডিটেইলিং ও পেইন্ট' },
+              { id: 'cleaning', label: lang === 'ENG' ? 'Foam Wash & Steam' : 'ওয়াশ ও স্টিম' },
+              { id: 'mechanical', label: lang === 'ENG' ? 'Servicing & Scan' : 'সার্ভিসিং ও স্ক্যান' },
+            ].map((tab) => (
               <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition duration-200 ${
-                  activeCategory === cat.id
-                    ? 'bg-[#C1121F] text-white shadow-sm'
-                    : 'bg-[#2A2A2A] text-stone-300 hover:bg-stone-800 hover:text-white'
+                key={tab.id}
+                onClick={() => setSelectedCategory(tab.id)}
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                  selectedCategory === tab.id
+                    ? 'bg-[#1C7230] text-white shadow-xs'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
                 }`}
               >
-                {cat.label}
+                {tab.label}
               </button>
             ))}
           </div>
-
-          {/* Search Box */}
-          <div className="relative w-full md:w-64">
-            <Search className="absolute left-3 top-2.5 w-4 h-4 text-stone-400" />
-            <input
-              type="text"
-              placeholder="Search services..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 text-xs bg-[#121212] border border-stone-800 rounded-xl focus:ring-2 focus:ring-[#C1121F] focus:outline-none text-white font-medium placeholder-stone-500"
-            />
-          </div>
-
         </div>
 
-        {/* Services Grid (9 Requested Services) */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Services Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {filteredServices.map((service) => (
             <div
               key={service.id}
-              className="group bg-[#1E1E1E] rounded-3xl overflow-hidden border border-stone-800 shadow-xl hover:shadow-2xl hover:border-[#C1121F]/60 transition-all duration-300 flex flex-col justify-between"
+              className="shomvob-card flex flex-col justify-between p-5 group"
             >
               <div>
-                {/* Image & Icon Overlay */}
-                <div className="relative h-48 overflow-hidden bg-stone-900">
-                  <img
-                    src={service.image}
-                    alt={`${service.title} - Arshi Automobile Rajshahi`}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1E1E1E] via-black/30 to-transparent" />
+                {/* Header with Icon & Badge */}
+                <div className="flex items-start justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-xl bg-[#EFF7F1] border border-emerald-100 flex items-center justify-center flex-shrink-0 group-hover:bg-[#1C7230] group-hover:text-white transition-colors duration-300">
+                      {getServiceIcon(service.iconName)}
+                    </div>
+                    <div>
+                      {service.badge && (
+                        <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-[#10693B] bg-[#EFF7F1] px-2 py-0.5 rounded-md mb-1">
+                          {service.badge}
+                        </span>
+                      )}
+                      <h3 className="text-base sm:text-lg font-bold text-gray-900 leading-snug group-hover:text-[#1C7230] transition-colors">
+                        {service.title}
+                      </h3>
+                    </div>
+                  </div>
+                </div>
 
-                  {/* Icon Badge */}
-                  <div className="absolute top-4 left-4 w-12 h-12 rounded-2xl bg-[#C1121F] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                    <Icon name={service.iconName} className="w-6 h-6 text-white" />
+                {/* Description */}
+                <p className="text-gray-600 text-xs sm:text-sm line-clamp-2 mb-4 leading-relaxed">
+                  {service.shortDesc}
+                </p>
+
+                {/* Shomvob Specs Pills */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="inline-flex items-center gap-1 rounded-md bg-gray-100 px-2.5 py-1 text-xs text-gray-700 font-medium">
+                    <Clock className="w-3.5 h-3.5 text-[#1C7230]" />
+                    <span>{service.duration}</span>
                   </div>
 
-                  {/* Pricing tag */}
-                  <div className="absolute bottom-3 right-3 bg-stone-900/90 text-white backdrop-blur-md px-3 py-1 rounded-xl text-xs font-extrabold border border-stone-700 flex items-center space-x-1">
-                    <Tag className="w-3 h-3 text-[#C1121F]" />
+                  <div className="inline-flex items-center gap-1 rounded-md bg-[#EFF7F1] px-2.5 py-1 text-xs text-[#10693B] font-bold">
+                    <Tag className="w-3.5 h-3.5 text-[#1C7230]" />
                     <span>{service.startingPrice}</span>
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-6 space-y-3">
-                  <div className="flex items-center justify-between text-xs text-stone-400 font-semibold">
-                    <span className="flex items-center space-x-1">
-                      <Clock className="w-3.5 h-3.5 text-stone-400" />
-                      <span>{service.duration}</span>
-                    </span>
-                    <span className="uppercase text-[10px] tracking-wider bg-[#2A2A2A] text-stone-300 px-2.5 py-0.5 rounded-full font-bold">
-                      {service.category}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl font-bold font-display text-white group-hover:text-[#C1121F] transition-colors">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-stone-300 text-xs leading-relaxed font-sans line-clamp-2">
-                    {service.shortDesc}
-                  </p>
-
-                  {/* Feature Highlights */}
-                  <ul className="space-y-1.5 pt-2">
-                    {service.features.slice(0, 3).map((feat, idx) => (
-                      <li key={idx} className="flex items-start space-x-2 text-xs text-stone-300">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#C1121F] shrink-0 mt-0.5" />
-                        <span className="line-clamp-1">{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
+                {/* Features Checkpoints */}
+                <div className="space-y-1.5 border-t border-gray-100 pt-3">
+                  {service.features.slice(0, 3).map((feat, idx) => (
+                    <div key={idx} className="flex items-start gap-2 text-xs text-gray-600">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#1C7230] flex-shrink-0 mt-0.5" />
+                      <span className="line-clamp-1">{feat}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              {/* Action Bar */}
-              <div className="p-6 pt-0 border-t border-stone-800 flex items-center gap-2 mt-4">
-                <button
-                  onClick={() => setSelectedServiceForModal(service)}
-                  className="flex-1 py-2.5 px-3 bg-[#2A2A2A] hover:bg-stone-800 text-stone-200 rounded-xl text-xs font-bold transition text-center"
-                >
-                  View Details
-                </button>
+              {/* Card Bottom CTA */}
+              <div className="mt-5 pt-3 border-t border-gray-100 flex items-center justify-between gap-3">
+                <div>
+                  <span className="text-[10px] text-gray-400 block uppercase font-medium">Starting</span>
+                  <span className="text-sm sm:text-base font-bold text-[#1C7230]">
+                    {service.startingPrice}
+                  </span>
+                </div>
+
                 <button
                   onClick={() => onSelectServiceToBook(service.id)}
-                  className="flex-1 py-2.5 px-3 bg-[#C1121F] hover:bg-[#9E0E18] text-white rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1 shadow-md"
+                  className="inline-flex items-center gap-1.5 bg-[#1C7230] hover:bg-[#10693B] text-white px-4 py-2 rounded-lg text-xs font-bold transition shadow-xs cursor-pointer"
                 >
-                  <span>Book Now</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <Calendar className="w-3.5 h-3.5" />
+                  <span>{lang === 'ENG' ? 'Book Service' : 'বুক করুন'}</span>
                 </button>
               </div>
-
             </div>
           ))}
         </div>
 
-        {/* Empty Search State */}
-        {filteredServices.length === 0 && (
-          <div className="text-center py-12 bg-[#1E1E1E] rounded-3xl border border-stone-800 mt-8 space-y-3">
-            <p className="text-stone-400 font-medium text-sm">No services matched your query "{searchQuery}".</p>
-            <button
-              onClick={() => { setActiveCategory('all'); setSearchQuery(''); }}
-              className="text-xs font-bold text-[#C1121F] hover:underline"
-            >
-              Reset Filters
-            </button>
-          </div>
-        )}
-
       </div>
-
-      {/* Service Details Modal Popup */}
-      {selectedServiceForModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-xs">
-          <div className="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl border border-stone-200 max-h-[90vh] overflow-y-auto space-y-6">
-            <button
-              onClick={() => setSelectedServiceForModal(null)}
-              className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-900 bg-stone-100 rounded-full"
-            >
-              ✕
-            </button>
-
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-[#C1121F] text-white rounded-2xl flex items-center justify-center">
-                <Icon name={selectedServiceForModal.iconName} className="w-6 h-6" />
-              </div>
-              <div>
-                <span className="text-xs font-bold text-[#C1121F] uppercase tracking-wider">{selectedServiceForModal.category}</span>
-                <h3 className="text-2xl font-bold font-display text-stone-900">{selectedServiceForModal.title}</h3>
-              </div>
-            </div>
-
-            <img
-              src={selectedServiceForModal.image}
-              alt={selectedServiceForModal.title}
-              className="w-full h-56 object-cover rounded-2xl border border-stone-200"
-              referrerPolicy="no-referrer"
-            />
-
-            <p className="text-stone-700 text-sm leading-relaxed">{selectedServiceForModal.fullDesc}</p>
-
-            <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200 space-y-2">
-              <h4 className="font-bold text-xs uppercase tracking-wider text-stone-800">What’s Included:</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-stone-700">
-                {selectedServiceForModal.features.map((f, idx) => (
-                  <div key={idx} className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#C1121F]" />
-                    <span>{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between border-t border-stone-200 pt-4">
-              <div>
-                <div className="text-xs text-stone-500">Starting Price</div>
-                <div className="text-xl font-black font-display text-[#C1121F]">{selectedServiceForModal.startingPrice}</div>
-              </div>
-              <button
-                onClick={() => {
-                  const sId = selectedServiceForModal.id;
-                  setSelectedServiceForModal(null);
-                  onSelectServiceToBook(sId);
-                }}
-                className="px-6 py-3 bg-[#C1121F] hover:bg-[#9E0E18] text-white font-bold rounded-xl text-sm transition shadow-lg"
-              >
-                Book This Service
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
     </section>
   );
 };

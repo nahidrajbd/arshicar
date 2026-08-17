@@ -2,182 +2,20 @@ import { ServiceItem, ReconditionedCar, FeaturePoint, GalleryItem, Testimonial }
 
 export const COMPANY_INFO = {
   name: "Arshi Automobile & Car Hub",
+  shortName: "Arshi Car Hub",
   domain: "arshicar.com",
   phone: "01712110902",
   phoneRaw: "+8801712110902",
-  whatsappUrl: "https://wa.me/8801712110902?text=Hello%20Arshi%20Automobile,%20I%20want%20to%20inquire%20about%20your%20services",
+  phoneFormatted: "+880 1712-110902",
+  whatsappUrl: "https://wa.me/8801712110902?text=Hello%20Arshi%20Automobile,%20I%20am%20interested%20in%20your%20services/cars",
   location: "Sopura Mothpukur, Rajshahi",
-  address: "Sopura Mothpukur, Rajshahi, Bangladesh",
+  address: "Sopura Mothpukur, Near BSCIC Industrial Area, Rajshahi-6203, Bangladesh",
+  googleMapsUrl: "https://maps.google.com/?q=Sopura+Mothpukur+Rajshahi",
   email: "info@arshicar.com",
-  workingHours: "Saturday - Thursday: 8:30 AM - 9:00 PM | Friday: 2:30 PM - 9:00 PM",
-  tagline: "Your Trusted Automobile Partner in Rajshahi",
-  subtagline: "Complete Car Care Under One Roof.",
+  workingHours: "Sat - Thu: 8:30 AM - 9:00 PM | Fri: 2:30 PM - 9:00 PM",
+  tagline: "The Smartest Automobile Platform to Buy Japanese Cars & Auto Care in Rajshahi.",
+  subtagline: "Where Every Drive Begins — Verified Japanese Reconditioned Cars & Master Detailing Studio Under One Roof."
 };
-
-export const SERVICES_LIST: ServiceItem[] = [
-  {
-    id: "reconditioned-cars",
-    title: "Japanese Reconditioned Cars",
-    iconName: "CarFront",
-    category: "sales",
-    shortDesc: "100% genuine auction graded reconditioned Toyota, Honda, & Nissan cars imported directly from Japan.",
-    fullDesc: "We provide high-grade Japanese reconditioned vehicles with verified auction sheets, low mileage, original paint, and complete documentation assistance for registration in Rajshahi and nationwide.",
-    features: [
-      "Authentic Auction Sheet Verification",
-      "Low Mileage Guaranteed",
-      "BRTA Registration Assistance",
-      "Complimentary First Service & Polish",
-      "Free Pre-delivery Inspection"
-    ],
-    duration: "Immediate Delivery / Pre-Order",
-    startingPrice: "BDT 18.5 Lac+",
-    image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    id: "car-wash",
-    title: "Car Wash",
-    iconName: "Droplets",
-    category: "cleaning",
-    shortDesc: "High-pressure foam wash and underbody cleaning to keep your vehicle dust-free and shining.",
-    fullDesc: "Our automated and manual touchless high-pressure wash removes dirt, road salt, mud, and contaminants from the chassis, wheels, and paintwork without causing swirl marks.",
-    features: [
-      "pH-neutral Snow Foam Treatment",
-      "Chassis High-Pressure Underwash",
-      "Microfiber Hand Wash & Dry",
-      "Tire & Rim Degreasing & Shine",
-      "Windshield & Glass Streak-free Finish"
-    ],
-    duration: "30 - 45 Mins",
-    startingPrice: "BDT 350",
-    image: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    id: "car-detailing",
-    title: "Car Detailing",
-    iconName: "Sparkles",
-    category: "restoration",
-    shortDesc: "Complete interior and exterior deep restoration service to restore factory showroom gloss.",
-    fullDesc: "Comprehensive deep detailing using premium ceramic sealants, paint correction, interior steam sanitization, and trim restoration for a brand-new showroom finish.",
-    features: [
-      "Multi-stage Paint Correction",
-      "Ceramic/Graphene Coating Application",
-      "Deep Fabric & Leather Conditioning",
-      "Headlight Restoration & Lens Clarity",
-      "Alloy Wheel & Brake Caliper Coating"
-    ],
-    duration: "4 - 8 Hours",
-    startingPrice: "BDT 3,500",
-    image: "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    id: "car-polish",
-    title: "Car Polish",
-    iconName: "Sun",
-    category: "restoration",
-    shortDesc: "3-step machine polish to eliminate swirl marks, minor scratches, and oxidation.",
-    fullDesc: "Professional dual-action machine polishing using German compounds to remove haze, swirls, and light scratches while leaving a protective hydrophobic wax layer.",
-    features: [
-      "3-Step Paint Compounding & Polishing",
-      "Swirl Mark & Hologram Removal",
-      "Synthetic Sealant Wax Shield",
-      "UV Rays Oxidation Protection",
-      "Deep Gloss Reflector Effect"
-    ],
-    duration: "2 - 3 Hours",
-    startingPrice: "BDT 1,800",
-    image: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    id: "dent-paint",
-    title: "Dent & Paint",
-    iconName: "Paintbrush",
-    category: "restoration",
-    shortDesc: "Computerized paint matching and precision dent removal in our climate-controlled spray booth.",
-    fullDesc: "From minor bumper scratches to major body repairs, our expert craftsmen use computerized color matching and infrared curing paint booths for seamless factory-grade results.",
-    features: [
-      "Paintless Dent Repair (PDR)",
-      "Computerized OEM Paint Matching",
-      "Dust-free Heating Spray Booth",
-      "Anti-rust Zinc Primer Base",
-      "Clear Coat High-Gloss Finishing"
-    ],
-    duration: "1 - 3 Days",
-    startingPrice: "BDT 2,500 / panel",
-    image: "https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    id: "car-servicing",
-    title: "Car Servicing",
-    iconName: "Wrench",
-    category: "mechanical",
-    shortDesc: "Comprehensive periodic maintenance, synthetic oil replacement, filter changes, and brake checkups.",
-    fullDesc: "Complete periodic vehicle tune-up using genuine engine oils (0W-20, 5W-30), OEM oil/air filter changes, spark plug testing, suspension check, and diagnostic scanning.",
-    features: [
-      "Genuine Engine Oil & Filter Change",
-      "AC Filter & Air Cleaner Cleaning",
-      "Brake Pad & Fluid Inspection",
-      "Suspension & Steering Checkup",
-      "Computerized Scanner Diagnostic"
-    ],
-    duration: "1.5 - 2 Hours",
-    startingPrice: "BDT 2,200",
-    image: "https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    id: "interior-cleaning",
-    title: "Interior Cleaning",
-    iconName: "Armchair",
-    category: "cleaning",
-    shortDesc: "Deep steam shampooing of seats, roof liner, carpets, and dashboard anti-bacterial treatment.",
-    fullDesc: "Thorough upholstery steam washing, stain extraction, roof headline cleaning, leather moisturizing, and ozone odor elimination to make your cabin fresh and hygienic.",
-    features: [
-      "Hot Steam Extraction Shampooing",
-      "Roof Liner & Door Panel Care",
-      "Leather Seat Conditioning & Nourish",
-      "AC Duct Anti-bacterial Sanitization",
-      "Odor & Dust Mite Removal"
-    ],
-    duration: "2 - 3 Hours",
-    startingPrice: "BDT 1,500",
-    image: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    id: "engine-cleaning",
-    title: "Engine Room Cleaning",
-    iconName: "Cpu",
-    category: "cleaning",
-    shortDesc: "Safe electronic-friendly dry steam degreasing and protective rubber dressing for the engine bay.",
-    fullDesc: "Safely cleans oil grime, dust, and grease from the engine block and components using non-conductive cleaners, followed by heat-resistant protective dressing.",
-    features: [
-      "Safe Waterless / Steam Degreasing",
-      "Electrical Sensors & Wiring Protection",
-      "Plastic & Hose Protective Dressing",
-      "Heat & Dust Repellent Sealant",
-      "Improved Engine Heat Dissipation"
-    ],
-    duration: "45 Mins",
-    startingPrice: "BDT 800",
-    image: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    id: "vehicle-inspection",
-    title: "Vehicle Inspection",
-    iconName: "ClipboardCheck",
-    category: "mechanical",
-    shortDesc: "150-point comprehensive pre-purchase diagnostic and physical health report.",
-    fullDesc: "Thinking of buying a used car or preparing for a long journey? Our master technicians run a computerized OBD-II scan, check paint thickness for hidden dents, suspension health, and hybrid battery status.",
-    features: [
-      "150-Point Digital Health Checklist",
-      "OBD-II Computerized Engine Scan",
-      "Hybrid Battery Cell Health Test",
-      "Paint Gauge Dent & Repair Scanner",
-      "Detailed Physical & Mechanical Report"
-    ],
-    duration: "1 Hour",
-    startingPrice: "BDT 1,200",
-    image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1200&q=80"
-  }
-];
 
 export const RECONDITIONED_CARS: ReconditionedCar[] = [
   {
@@ -190,204 +28,421 @@ export const RECONDITIONED_CARS: ReconditionedCar[] = [
     color: "Pearl White",
     mileage: "28,500 km",
     auctionGrade: "4.5 / A",
-    price: "BDT 38,500,00",
+    price: "BDT 38,50,000",
+    rawPriceNumber: 3850000,
     transmission: "Automatic (CVT)",
     fuelType: "Octane",
+    bodyType: "Sedan",
+    location: "Sopura, Rajshahi",
     status: "In Stock",
+    verifiedAuction: true,
     features: [
       "Toyota Safety Sense 2.0",
-      "Beige Leather Interior",
-      "Power Driver Seat",
-      "Push Start & Smart Key",
-      "360 Camera & Parking Sensors",
-      "Original Japanese Navigation"
+      "Beige Premium Leather Interior",
+      "Power Driver Seat & Lumbar Support",
+      "Push Start & Smart Keyless Entry",
+      "360 Degree Camera & Parking Sensors",
+      "Original Japanese Touchscreen Navigation"
     ],
-    image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1000&q=80"
+    image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1000&q=80",
+    galleryImages: [
+      "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1000&q=80"
+    ]
   },
   {
     id: "car-2",
-    title: "Toyota Harrier Progressive 2021",
+    title: "Toyota Harrier Progressive Leather 2021",
     make: "Toyota",
     model: "Harrier",
     year: 2021,
     engine: "2000 cc",
-    color: "Attitude Black",
+    color: "Attitude Black Mica",
     mileage: "21,000 km",
     auctionGrade: "5.0 / A",
-    price: "BDT 64,000,00",
-    transmission: "Automatic",
+    price: "BDT 64,00,000",
+    rawPriceNumber: 6400000,
+    transmission: "Automatic 8-Speed",
     fuelType: "Octane / Hybrid",
+    bodyType: "SUV",
+    location: "Sopura, Rajshahi",
     status: "In Stock",
+    verifiedAuction: true,
     features: [
-      "Panoramic Dimming Sunroof",
-      "JBL Sound System",
-      "Brown Premium Leather Interior",
-      "Radar Cruise Control",
-      "HUD Head-up Display"
+      "Electrochromic Panoramic Dimming Sunroof",
+      "JBL 9-Speaker Premium Surround Sound",
+      "Brown Executive Leather Upholstery",
+      "Radar Dynamic Radar Cruise Control",
+      "Head-Up Display (HUD) & Memory Seats",
+      "Hands-free Power Tailgate with Kick Sensor"
     ],
-    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80"
+    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80",
+    galleryImages: [
+      "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80"
+    ]
   },
   {
     id: "car-3",
+    title: "Honda Vezel e:HEV Z Sensing 2021",
+    make: "Honda",
+    model: "Vezel",
+    year: 2021,
+    engine: "1500 cc Hybrid",
+    color: "Crystal Red Metallic",
+    mileage: "24,500 km",
+    auctionGrade: "4.5 / A",
+    price: "BDT 32,80,000",
+    rawPriceNumber: 3280000,
+    transmission: "e-CVT Automatic",
+    fuelType: "Hybrid",
+    bodyType: "SUV",
+    location: "Sopura, Rajshahi",
+    status: "In Stock",
+    verifiedAuction: true,
+    features: [
+      "Honda SENSING Suite with Lane Keep Assist",
+      "Half Leather Sport Heated Seats",
+      "Panoramic Glass Roof & Ambient Lighting",
+      "Apple CarPlay & Wireless Charger",
+      "Sequential LED Turn Indicators",
+      "24 km/L Certified Fuel Efficiency"
+    ],
+    image: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80",
+    galleryImages: [
+      "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80"
+    ]
+  },
+  {
+    id: "car-4",
     title: "Toyota Noah Hybrid Si WxB 2019",
     make: "Toyota",
     model: "Noah",
     year: 2019,
     engine: "1800 cc Hybrid",
-    color: "Sparkling Black",
-    mileage: "36,000 km",
+    color: "Sparkling Black Pearl",
+    mileage: "36,200 km",
     auctionGrade: "4.0 / B",
-    price: "BDT 34,20,000",
+    price: "BDT 34,50,000",
+    rawPriceNumber: 3450000,
     transmission: "Automatic",
     fuelType: "Hybrid",
+    bodyType: "MPV",
+    location: "Sopura, Rajshahi",
     status: "In Stock",
+    verifiedAuction: true,
     features: [
-      "Dual Power Sliding Doors",
-      "7-Seater Captain Seats",
-      "Rear Roof Monitor",
-      "Ultra Fuel Efficient (22 km/L)",
-      "Safety Sense Package"
+      "Dual Power Automatic Sliding Doors",
+      "7-Seater Luxury Captain Seats",
+      "Rear Ceiling Entertainment Screen",
+      "WxB Special Aero Bodykit & Smoked Chrome",
+      "Dual Zone Climate Control with Nanoe Clean"
     ],
     image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80"
   },
   {
-    id: "car-4",
-    title: "Honda Vezel Z Sensing 2020",
-    make: "Honda",
-    model: "Vezel",
-    year: 2020,
-    engine: "1500 cc e:HEV",
-    color: "Wine Red",
-    mileage: "24,000 km",
-    auctionGrade: "4.5 / A",
-    price: "BDT 31,80,000",
-    transmission: "Dual Clutch 7-Speed",
+    id: "car-5",
+    title: "Toyota Corolla Cross Z Hybrid 2022",
+    make: "Toyota",
+    model: "Corolla Cross",
+    year: 2022,
+    engine: "1800 cc Hybrid",
+    color: "Cement Grey",
+    mileage: "18,000 km",
+    auctionGrade: "5.0 / A",
+    price: "BDT 42,50,000",
+    rawPriceNumber: 4250000,
+    transmission: "Automatic",
     fuelType: "Hybrid",
-    status: "In Stock",
+    bodyType: "SUV",
+    location: "Sopura, Rajshahi",
+    status: "Upcoming",
+    verifiedAuction: true,
     features: [
-      "Honda Sensing Tech",
-      "Half Leather Sport Seats",
-      "Paddle Shifters",
-      "LED Sequential Indicators",
-      "Magic Rear Seats"
+      "Top-tier Z Grade with Panoramic Roof",
+      "18-inch Diamond Cut Alloy Wheels",
+      "Full Digital Instrument Cluster",
+      "Blind Spot Monitoring & Cross Traffic Alert",
+      "Premium Terra Cotta Leather Accents"
     ],
-    image: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80"
+    image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    id: "car-6",
+    title: "Toyota Corolla Axio Hybrid G 2019",
+    make: "Toyota",
+    model: "Corolla Axio",
+    year: 2019,
+    engine: "1500 cc Hybrid",
+    color: "Silver Metallic",
+    mileage: "42,000 km",
+    auctionGrade: "4.0 / B",
+    price: "BDT 22,80,000",
+    rawPriceNumber: 2280000,
+    transmission: "Automatic",
+    fuelType: "Hybrid",
+    bodyType: "Sedan",
+    location: "Sopura, Rajshahi",
+    status: "In Stock",
+    verifiedAuction: true,
+    features: [
+      "Toyota Safety Sense C Package",
+      "Push Start & Climate Control AC",
+      "Projector LED Headlamps",
+      "Outstanding Mileage (28 km/L)",
+      "Low Maintenance & High Reliability"
+    ],
+    image: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=1000&q=80"
   }
+];
+
+export const SERVICES_LIST: ServiceItem[] = [
+  {
+    id: "ceramic-detailing",
+    title: "9H Ceramic & Graphene Coating",
+    iconName: "Sparkles",
+    category: "restoration",
+    shortDesc: "Complete 3-stage paint correction with German hydrophobic ceramic glass coating for ultra gloss and scratch protection.",
+    fullDesc: "Our flagship detailing package restores deeper depth, diamond-like reflection, and permanent hydrophobic protection against UV sun oxidation, acid rain, bird droppings, and swirl marks.",
+    features: [
+      "3-Stage Rotary & Dual-Action Paint Correction",
+      "Certified 9H Nano-Ceramic 3-Layer Coat",
+      "Windshield & Glass Rain Repellent Treatment",
+      "Alloy Wheel & Brake Caliper Thermal Shield",
+      "Interior Leather & Upholstery Anti-Stain Coating",
+      "2-Year Gloss & Hydrophobic Warranty"
+    ],
+    duration: "6 - 8 Hours",
+    startingPrice: "BDT 7,500",
+    badge: "Most Popular",
+    popular: true,
+    image: "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    id: "car-wash",
+    title: "Premium Snow Foam & Underbody Wash",
+    iconName: "Droplets",
+    category: "cleaning",
+    shortDesc: "High-pressure touchless snow foam wash, chassis anti-rust underwash, and tire dressing.",
+    fullDesc: "Touchless pH-neutral snow foam bath that loosens stubborn mud and road grime, followed by 180-bar high-pressure underbody rinse, microfiber hand dry, and tire satin dressing.",
+    features: [
+      "pH-Neutral Heavy Snow Foam Pre-Soak",
+      "180-Bar Chassis & Wheel Arch Wash",
+      "Scratchless Microfiber Mitt Hand Wash",
+      "Tire & Rim Deep Degreasing & Dressing",
+      "Interior Vacuum & Windshield Streak-Free Clean"
+    ],
+    duration: "35 - 45 Mins",
+    startingPrice: "BDT 400",
+    badge: "Quick Service",
+    popular: true,
+    image: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    id: "dent-paint",
+    title: "Booth Paint & Precision Dent Repair",
+    iconName: "Paintbrush",
+    category: "restoration",
+    shortDesc: "Computerized spectrophotometer color matching and dust-free heated spray booth baking.",
+    fullDesc: "From minor bumper scratches to extensive body panel restoration, we utilize computerized paint matching with German Standox clear coats and dust-free infrared curing booths.",
+    features: [
+      "Computerized OEM Paint Code Matching",
+      "Paintless Dent Repair (PDR) Technique",
+      "Anti-Corrosive Zinc Epoxy Primer Base",
+      "Dust-Free Heated Spray Booth Baking",
+      "Clear Coat Wet Sanding & Mirror Polish"
+    ],
+    duration: "1 - 2 Days",
+    startingPrice: "BDT 2,500 / panel",
+    badge: "Factory Finish",
+    popular: false,
+    image: "https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    id: "car-servicing",
+    title: "Complete Periodic Maintenance & Tune-Up",
+    iconName: "Wrench",
+    category: "mechanical",
+    shortDesc: "Full synthetic Japanese oil change, spark plug tuning, brake service, and OBD scanner check.",
+    fullDesc: "Comprehensive periodic service using genuine OEM engine oils (0W-20 / 5W-30), OEM oil & cabin air filters, throttle body cleaning, brake pads inspection, and 50-point safety check.",
+    features: [
+      "Genuine Japanese Synthetic Engine Oil & Filter",
+      "Electronic Throttle Body & Air Cleaner Tuning",
+      "Brake Caliper Servicing & Fluid Flush",
+      "Suspension, Bushing & Steering System Check",
+      "Computerized OBD-II Diagnostics Health Report"
+    ],
+    duration: "1.5 - 2 Hours",
+    startingPrice: "BDT 2,800",
+    badge: "Essential Care",
+    popular: true,
+    image: "https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    id: "interior-steam",
+    title: "Interior Deep Steam Sanitization",
+    iconName: "Armchair",
+    category: "cleaning",
+    shortDesc: "Hot steam extraction of fabric/leather seats, roof headliner, carpets, and AC odor elimination.",
+    fullDesc: "Eliminate bacteria, allergen dust mites, and stubborn stains with 140°C high-temperature dry steam extraction shampooing for leather, fabric, floor mats, and AC ducts.",
+    features: [
+      "140°C High-Pressure Dry Steam Stain Extraction",
+      "Roof Headliner & Door Fabric Shampooing",
+      "Leather Seat Conditioning with UV Balms",
+      "AC Duct Bacterial Ozone Disinfection",
+      "Odor, Pet Hair & Allergen Elimination"
+    ],
+    duration: "2 - 3 Hours",
+    startingPrice: "BDT 1,600",
+    badge: "100% Hygienic",
+    popular: false,
+    image: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    id: "vehicle-inspection",
+    title: "150-Point Pre-Purchase Car Inspection",
+    iconName: "ClipboardCheck",
+    category: "mechanical",
+    shortDesc: "Digital paint thickness scan for hidden accident repairs, hybrid battery cell check, and road test.",
+    fullDesc: "Planning to purchase a reconditioned or used car? Our master technicians perform an exhaustive inspection including paint meter tests, computerized engine scanning, and hybrid battery diagnostics.",
+    features: [
+      "Paint Thickness Gauge for Hidden Dent/Repairs",
+      "OBD-II Live Computer Diagnostic Scan",
+      "Hybrid Battery Cell Voltage & Capacity Test",
+      "Undercarriage Rust & Suspension Play Check",
+      "Written 150-Point Digital Health Certificate"
+    ],
+    duration: "1 Hour",
+    startingPrice: "BDT 1,500",
+    badge: "Certified Report",
+    popular: false,
+    image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1200&q=80"
+  }
+];
+
+export const CATEGORIES_LIST = [
+  { id: 'all', name: 'All Cars & Services', count: '12 Available', icon: 'Car' },
+  { id: 'sedan', name: 'Sedans (Premio, Axio)', count: '6 Vehicles', icon: 'CarFront' },
+  { id: 'suv', name: 'SUVs & Crossovers (Harrier, Vezel)', count: '4 Vehicles', icon: 'Shield' },
+  { id: 'hybrid', name: 'Hybrids & EVs', count: '5 Vehicles', icon: 'Zap' },
+  { id: 'detailing', name: 'Ceramic Coating & Polish', count: '4 Packages', icon: 'Sparkles' },
+  { id: 'maintenance', name: 'Servicing & Repairs', count: '3 Packages', icon: 'Wrench' },
 ];
 
 export const WHY_CHOOSE_US: FeaturePoint[] = [
   {
     id: "exp-team",
-    title: "Experienced Team",
-    description: "Certified automotive engineers and skilled detailers with over 12+ years of hands-on experience in Japanese vehicles.",
-    iconName: "UserCheck",
-    statBadge: "12+ Years Exp."
+    title: "100% Genuine Japanese Auction Sheets",
+    description: "Every reconditioned car comes with verified auction sheets directly from USS, TAA, & CAA auctions in Japan with zero odometer tampering.",
+    iconName: "ShieldCheck",
+    statBadge: "Verified Auction"
   },
   {
     id: "mod-equip",
-    title: "Modern Equipment",
-    description: "Equipped with climate-controlled paint spray booths, computerized diagnostic scanners, German dual-action polishers, and dry steam washers.",
-    iconName: "ShieldCheck",
-    statBadge: "High-Tech Tools"
+    title: "Modern European Detailing Equipment",
+    description: "Equipped with dust-free infrared paint baking booths, German dual-action Rupes polishers, and 140°C dry steam sanitizers.",
+    iconName: "Wrench",
+    statBadge: "High-Tech Studio"
   },
   {
     id: "aff-price",
-    title: "Affordable Pricing",
-    description: "Transparent rates without hidden costs. High premium car care delivered at competitive prices tailored for Rajshahi vehicle owners.",
+    title: "Transparent & Competitive Pricing",
+    description: "Clear fixed rates with no hidden costs. High-end showroom quality and detailing craftsmanship at honest Rajshahi rates.",
     iconName: "Tag",
-    statBadge: "Transparent Rates"
+    statBadge: "Best Value"
   },
   {
     id: "trust-serv",
-    title: "Trusted Service",
-    description: "Built on honesty and customer satisfaction. Over 5,000+ happy car owners trust us for sales, detailing, and servicing.",
+    title: "5,000+ Satisfied Clients in Rajshahi",
+    description: "Serving car enthusiasts across Rajshahi Division with complete after-sales warranty, registration help, and continuous car care.",
     iconName: "Award",
-    statBadge: "5,000+ Clients"
+    statBadge: "5,000+ Happy Owners"
   }
 ];
 
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: "gal-1",
-    title: "Deep Snow Foam Car Wash",
+    title: "Touchless High-Pressure Snow Foam Bath",
     category: "Wash",
-    categoryLabel: "Car Wash",
+    categoryLabel: "Snow Foam Wash",
     image: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=800&q=80",
-    description: "High pressure foam bathing removing road grime from Toyota Crown."
+    description: "Chassis underwash and swirl-free snow foam bath for Toyota Crown."
   },
   {
     id: "gal-2",
-    title: "3-Step Ceramic Paint Polish",
+    title: "9H Ceramic Coating Mirror Reflection",
     category: "Polish",
-    categoryLabel: "Car Polish",
+    categoryLabel: "Ceramic Detailing",
     image: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=800&q=80",
-    description: "Restoring depth and mirror gloss finish on dark navy paintwork."
+    description: "Multi-stage paint correction and 9H hydrophobic coating on Toyota Harrier."
   },
   {
     id: "gal-3",
     title: "Engine Bay Steam Restoration",
     category: "BeforeAfter",
-    categoryLabel: "Before & After",
+    categoryLabel: "Engine Steam",
     beforeImage: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=800&q=80",
     afterImage: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80",
     image: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=800&q=80",
-    description: "Before & After transformation of oil-coated engine bay into spotless dry condition."
+    description: "Safe non-conductive steam cleaning removing oil sludge and grease."
   },
   {
     id: "gal-4",
-    title: "Precision Bumper Dent & Paint Job",
+    title: "Computerized Spray Booth Bumper Paint",
     category: "DentPaint",
     categoryLabel: "Dent & Paint",
     image: "https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=800&q=80",
-    description: "Computer matched paint spray booth finishing for seamless repair."
+    description: "Dust-free infrared paint baking booth matching factory pearl white."
   },
   {
     id: "gal-5",
-    title: "Our Main Service Workshop",
+    title: "Modern Service Bays in Sopura",
     category: "Workshop",
-    categoryLabel: "Workshop",
+    categoryLabel: "Showroom & Workshop",
     image: "https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80",
-    description: "Fully equipped modern bay with hydraulic lifts and computerized scanner units."
+    description: "Hydraulic lifts, computerized scan tools, and comfortable AC customer lounge."
   },
   {
     id: "gal-6",
-    title: "Happy Customer Reconditioned Delivery",
+    title: "Fresh Japanese Car Key Handover",
     category: "Delivery",
-    categoryLabel: "Customer Delivery",
+    categoryLabel: "Customer Handover",
     image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80",
-    description: "Handing over fresh 4.5 Auction Grade Toyota Premio key to proud Rajshahi owner."
+    description: "Delivering a certified Grade 5 Toyota Premio to proud owner in Rajshahi."
   }
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: "rev-1",
-    name: "Tanvir Ahmed",
+    name: "Dr. Tanvir Ahmed",
     location: "Padma Residential Area, Rajshahi",
-    carModel: "Toyota Premio 2018",
+    carModel: "Toyota Premio F-EX 2020",
     rating: 5,
-    comment: "I bought my Toyota Premio from Arshi Automobile. The auction sheet was 100% verified authentic. They even provided full ceramic polish and detailing before handing over the keys. Most trustworthy automobile shop in Rajshahi!",
+    comment: "I purchased my Toyota Premio from Arshi Automobile. The auction sheet was 100% authentic and verified. They performed a full complimentary 9H ceramic coating before handover. Best showroom in Rajshahi!",
     date: "July 2026",
-    serviceTaken: "Reconditioned Car Purchase & Detailing"
+    serviceTaken: "Japanese Reconditioned Car Purchase & Detailing"
   },
   {
     id: "rev-2",
-    name: "Dr. Nazmul Hasan",
-    location: "KAZI HATA, Rajshahi",
-    carModel: "Toyota Harrier 2020",
+    name: "Engr. Nazmul Hasan",
+    location: "Kazihata, Rajshahi",
+    carModel: "Toyota Harrier Progressive",
     rating: 5,
-    comment: "Took my Harrier for full interior steam cleaning and dent repair on the rear door. Their paint matching in the spray booth was flawless — looks like it never had a dent! Very polite team and reasonable price.",
+    comment: "Had deep scratch dents on the passenger door. Arshi's paint booth matched the factory pearl paint seamlessly with zero difference. The staff is polite, professional, and transparent about costs.",
     date: "June 2026",
-    serviceTaken: "Dent & Paint + Interior Steam Cleaning"
+    serviceTaken: "Dent & Paint + Interior Steam Sanitization"
   },
   {
     id: "rev-3",
-    name: "Engr. Mahmudul Islam",
-    location: "Sapura, Rajshahi",
+    name: "Mahmudul Islam",
+    location: "Sopura, Rajshahi",
     carModel: "Honda Vezel Hybrid",
     rating: 5,
-    comment: "Regular customer for foam wash and engine room cleaning. They treat every car with utmost care using high-end microfiber towels and safe steam. Highly recommended for any car care in Rajshahi!",
+    comment: "Regular client for their snow foam wash and periodic engine tune-up. They handle hybrid cars with great technical competence. Highly recommended!",
     date: "August 2026",
-    serviceTaken: "Car Wash & Engine Room Cleaning"
+    serviceTaken: "Periodic Maintenance & Snow Foam Wash"
   }
 ];
